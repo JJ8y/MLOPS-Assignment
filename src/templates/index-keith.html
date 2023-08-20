@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Predict Anomaly</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='./style-keith.css') }}">
+
+</head>
+
+<body>
+<div class="btn-group" style="width:100%">
+<a href="{{ url_for('home') }}">
+    <button style="width:33.3%">Predict Patient Cardiovascular Health</button>
+</a>
+
+<a href="{{ url_for('predict_resale') }}">
+    <button style="width:33.3%">Predict Resale Price</button>
+</a>
+
+<a href="{{ url_for('detect_anomaly') }}">
+    <button style="width:33.3%">Detect Anomaly</button>
+</a>
+
+</div>
+</div>
+ <div class="login">
+	<h1>Predict Anomaly</h1>
+
+     <!-- Form to enter new data for predictions  -->
+    <form action="{{ url_for('detect_anomaly') }}" method="POST">
+      <input type="text" name="FISCAL_YR" placeholder="Fiscal Year" required="required" /><br>
+    	<input type="text" name="FISCAL_MTH" placeholder="Fiscal Month" required="required" /><br>
+        <select name="DEPT_NAME" required ="required">
+            <option value =" "disabled selected>Select Department</option>
+            <option value = "DEPT OF EDUCATION">DEPT OF EDUCATION</option>
+        </select>
+        <select name="DIV_NAME"required ="required">
+            <option value =" "disabled selected>Select Divison Name</option>
+            <option value ="DEPARTMENT OF EDUCATION">Department of Education</option>
+            <option value ="ADVISORY COUNCIL">Advisory Council</option>
+            <option value ="Academic Support">Academic Support</option>
+            <option value ="Driver Training">Driver Training</option>
+            <option value ="Educator Support">Educator Support</option>
+            <option value ="EDUCATION BLOCK GRANTS">Education Block Grants</option>
+            <option value ="E Education Block Grants">E Education Block Grants</option>
+            <option value ="E Transportation">E Transportation</option>
+            <option value ="Adult Education and Work Force">Adult Education and Work Force</option>
+            <option value ="SPECIAL NEEDS PROGRAMS">Special Needs Program</option>
+            <option value ="OTHER ITEMS">Other Items</option>
+            <option value ="Operations Support">Operations Support</option>
+            <option value ="Office of Early Learning">Office of Early Learning</option>
+            <option value ="Office of the Secretary">Office of the Secretary</option>
+            <option value ="State Board of Education">State Board of Education</option>
+            <option value ="Professional Standards Board">Professional Standards Board</option>
+            <option value ="Public School Transportation">Public School Transportation</option>
+            <option value ="Student Support">Student Support</option>
+            <option value ="TRANSPORTATION">Transportation</option>
+
+        </select>
+        <input type="text" name="MERCHANT" placeholder="Merchant" required="required" /><br>
+        <input type="text" name="CAT DESCR" placeholder="Category Description" required="required" /><br>
+        <input type="date" name="TRANS_DT" placeholder="Transaction Date" required="required" /><br>
+        <input type="text" name="AMT" placeholder="Amount" required="required" /><br>
+
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+
+
+ </div>
+ {{pred}}
+
+</body>
+</html>
