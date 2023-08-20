@@ -1,0 +1,25 @@
+# data
+dataset:
+  data: 01_hdb_resale_transactions.csv
+  encoding: iso-8859-1
+
+pipeline:
+  pipeline01: resale_pipeline.pkl
+
+target: 
+  target: resale_price
+
+variables:
+# this variable is to calculate the temporal variable,
+# must be dropped afterwards
+  drop_features: ['street_name', 'postal_code', 'latitude', 'longitude']
+
+  numerical_vars_from_numerical: []
+
+  categorical_vars: ['town']
+
+  categorical_label_extraction: ['town']
+
+  categorical_onehot: []
+
+
