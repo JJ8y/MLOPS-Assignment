@@ -1,5 +1,7 @@
 # MLOPS Assignment
 
+Our project is to predict Heart disease, Resale price and anomaly in corporate cases
+
 ## Tools used in this project
 * [Poetry](https://towardsdatascience.com/how-to-effortlessly-publish-your-python-package-to-pypi-using-poetry-44b305362f9f): Dependency management - [article](https://mathdatasimplified.com/2023/06/12/poetry-a-better-way-to-manage-python-dependencies/)
 * [hydra](https://hydra.cc/): Manage configuration files - [article](https://mathdatasimplified.com/2023/05/25/stop-hard-coding-in-a-data-science-project-use-configuration-files-instead/)
@@ -18,6 +20,7 @@ make env
 To install all dependencies for this project, run:
 ```bash
 poetry install
+cookiecutter install
 ```
 
 To install a new package, run:
@@ -28,26 +31,51 @@ poetry add <package-name>
 ## Version your data
 To track changes to the "data" directory, type:
 ```bash
-dvc add data
+python = "3.9.7"
+dvc = "^2.10.0"
+hydra-core = "^1.1.1"
+pdoc3 = "^0.10.0"
 ```
-
-This command will create the "data.dvc" file, which contains a unique identifier and the location of the data directory in the file system.
-
-To keep track of the data associated with a particular version, commit the "data.dvc" file to Git:
-```bash
-git add data.dvc
-git commit -m "add data"
-```
-
-To push the data to remote storage, type:
-```bash
-dvc push 
-```
-
-## Auto-generate API documentation
-
-To auto-generate API document for your project, run:
-
-```bash
-make docs
-```
+## Folder structure
+MLOPS Assignment/
+├── .dvc/
+│   ├── .gitignore
+│   └── config
+├── .git/
+├── .idea/
+├── config/
+│   ├── preprocessing.yaml
+│   ├── main.yaml
+│   ├── process.yaml
+│   └── model.yaml
+├── data/
+│   ├── final/
+│   ├── processed/
+│   ├── raw/
+│   ├── raw.dvc
+├── docs/
+├── models/
+│   ├── ensemble_model.pkl
+│   └── resale_pipeline.pkl
+├── notebooks/
+│   ├── .ipynb_checkpoints/
+│   ├── .gitkeep
+│   ├── 213014M_IT3385_Assignment.ipynb
+│   ├── 21409C_Machine Learning Ops Assignment.ipynb
+│   ├── keith_MLOPS_assignment.ipynb
+├── outputs/
+├── src/
+│   ├── templates/
+│   ├── statics/
+│   ├── jj_app.py
+│   ├── keith_app.py
+│   ├── siddarth_app.py
+│   ├── hydra/
+│   └── output/
+├── tests/
+├── .gitattributes
+├── .gitignore
+├── pre-commit-config.yaml
+├── Makefile
+├── pyproject.toml
+└── README.md
